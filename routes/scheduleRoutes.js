@@ -10,10 +10,20 @@ mongoose.connect('mongodb://localhost/quiz_managerDB', {
   useCreateIndex: true
 });
 
-// read
-router.get('/schedule', (req, res)=>{
+// Home
+router.get('/scheduleHome', (req, res)=>{
     res.send("This is my world");
   
+});
+
+//read
+router.get('/schedule', (req, res)=>{
+    scheduleModel.find({}, (data)=>{
+      res.send(data);
+      console.log(data);
+    })
+    // res.send(allSchedule);
+
 });
 
 // create a Schedule
