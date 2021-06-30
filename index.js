@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const router = require('./routes/allRoutes');
+const loadQuestionsRoute = require('./routes/loadQuestionsRoutes');
+const scheduleRoutes = require('./routes/scheduleRoutes');
 const bodyParser = require('body-parser');
 
 
@@ -11,7 +12,8 @@ app.use(bodyParser.json());
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // load all routes route
-app.use('/', router);
+app.use('/', loadQuestionsRoute);
+app.use('/', scheduleRoutes);
 
 
 

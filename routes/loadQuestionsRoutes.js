@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const questionsModel = require('./model/loadQuestionsSchema')
+const questionsModel = require('../model/loadQuestionsSchema')
 
 mongoose.connect('mongodb://localhost/quiz_managerDB', {
   useNewUrlParser: true,
@@ -44,7 +44,17 @@ instance.save(function (err) {
 });
 
 
-// read or query from database
+// read or query from questions from database
+router.get('/loadQuestions/all', (req, res)=>{
+    questionsModel.find({},{"subject":"Mathematics"},function(aSubject){
+    // deleteQuestionMsg.push({msg:"Questions has been deleted!"})  
+        
+        // res.send(deleteQuestionMsg[0].msg);
+        console.log("the result is " + aSubject);
+        res.send(aSubject);
+     });
+
+});
 
 
 //delete questions
